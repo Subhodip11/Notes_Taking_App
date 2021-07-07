@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    #nav-bar {
+        background-color: rgb(48, 47, 47);
+        display: flex;
+        flex-wrap: wrap;
+        position: relative;
+        color: white;
+    }
+    
+    #nav-bar #beginning {
+        list-style-type: none;
+        display: flex;
+        flex-direction: row;
+        padding: 0.8rem;
+    }
+    
+    #nav-bar #last {
+        list-style-type: none;
+        position: absolute;
+        top: 20%;
+        right: 2%;
+    }
+    
+    #nav-bar #last input {
+        padding: 0.3rem;
+        border-radius: 0.3rem;
+    }
+    
+    #nav-bar #last button {
+        padding: 0.35rem;
+        outline: none;
+        border: 1px solid green;
+        background-color: transparent;
+        color: green;
+        font-size: 12px;
+        margin-left: 0.26rem;
+        border-radius: 0.3rem;
+    }
+    
+    #main-part {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    #note-area {
+        height: auto;
+        width: 70%;
+        /* border: 1px solid black; */
+        margin: 0.5rem;
+        padding: 0 0.5rem;
+    }
+    
+    #note-area h1 {
+        padding: 0.5rem 0.2rem;
+    }
+    
+    #add-note-area {
+        border: 0.01px solid rgb(161, 160, 160);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 0.29rem;
+        margin: 0.5rem;
+    }
+    
+    #add-note-area .margin-to-all {
+        margin: 0.3rem;
+    }
+    
+    #add-note-area textarea {
+        border-radius: 0.3rem;
+        outline: none;
+        border: 0.5px solid rgb(177, 176, 176);
+        height: 3.5rem;
+        width: 95%;
+        padding-right: 0.125rem;
+        padding: 0.2rem;
+        resize: vertical;
+    }
+    
+    #add-title {
+        padding: 0.2rem;
+        border-radius: 0.3rem;
+        outline: none;
+        border: 0.1px solid rgb(177, 176, 176);
+        width: 20rem;
+    }
+    
+    #add-note-area .add-btn {
+        padding: 0.5rem 0.6rem;
+        background-color: rgb(76, 152, 223);
+        color: white;
+        border: 0.4px solid rgb(81, 81, 245);
+        outline: none;
+        border-radius: 0.3rem;
+        transition: 0.5s;
+    }
+    
+    #note-area h2 {
+        margin: 0.5rem 0;
+        font-size: 32px;
+    }
+    
+    hr {
+        opacity: 0.5;
+    }
+    
+    .add-btn:active {
+        color: black;
+        background-color: whitesmoke;
+    }
+    
+    .add-btn:focus {
+        color: greenyellow;
+        background-color: blue;
+    }
+    
+    #bottom-section {
+        height: auto;
+        width: 100%;
+        padding-top: 0.3rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+    
+    .new-note-area {
+        border: 0.000125rem solid gray;
+        margin: 0.5rem;
+        padding: 0.25rem;
+        height: auto;
+        width: auto;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+    
+    .new-note-area button {
+        font-size: 0.6875rem;
+        padding: 0.18rem;
+        border-radius: 0.3rem;
+        outline: none;
+        border: none;
+        background-color: rgb(76, 152, 223);
+        color: white;
+        margin: 0.3rem auto;
+    }
+    
+    .new-area {
+        overflow: auto;
+        margin: 0.3rem 0;
+        height: auto;
+        width: 100%;
+        font-size: 0.625rem;
+    }
+    
+    .new-area p {
+        font-size: 0.8125rem;
+        margin: 0.3rem 0;
+    }
+    
+    @media only screen and (max-width: 400px) {
+        #nav-bar {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+        #nav-bar #beginning {
+            clear: both;
+        }
+        #nav-bar #last {
+            position: unset;
+            margin: 0 auto 0.4rem;
+        }
+        #note-area {
+            height: auto;
+            width: 80%;
+            /* border: 1px solid black; */
+            margin: 0.5rem;
+            padding: 0 0.5rem;
+        }
+    }
+    
+    @media only screen and (max-width:800px) {
+        #add-title {
+            width: auto;
+        }
+    }
+</style>
+
+<body>
+    <!-- You can just give the href link in here to go for the pages  -->
+    <div id="nav-bar">
+        <ul id='beginning'>
+            <li>Magic Notes</li>
+            <li style="padding-left: 1.2rem; padding-top:0.14rem; font-size: 0.8rem;"><a href='#'>Home</a></li>
+            <li style="padding-left: 1.2rem; padding-top:0.14rem; font-size: 0.8rem;"><a href='#'>About US</a></li>
+            <li style="padding-left: 1.2rem; padding-top:0.14rem; font-size: 0.8rem;"><a href='#'>Contact US</a></li>
+
+        </ul>
+        <ul id='last'>
+            <input type="text" placeholder="Search Text" id='Search-note' list="data-list">
+            <datalist id='data-list'></datalist>
+            <button id='search-btn'>Search</button>
+
+        </ul>
+    </div>
+    <div id="main-part">
+        <div id="note-area">
+            <hr>
+            <h1>Welcome to Magic Notes</h1>
+            <div id="add-note-area">
+                <input class="margin-to-all" id='add-title' type="text" placeholder='Add a title' maxlength=25>
+                <textarea class="margin-to-all" id="enter-note" placeholder="Add your note here"></textarea>
+                <button class="margin-to-all add-btn">Add Note</button>
+            </div>
+            <hr>
+            <h2>Your Notes</h2>
+            <hr>
+            <p id='mssg-to-show' style="font-size: 0.9rem; color: gray; margin: 0.5rem 0;"></p>
+            <!-- In this div new notes will get added -->
+            <div id="bottom-section">
+
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+<script>
+    let local = localStorage;
+    let add_btn = document.querySelector('.add-btn');
+    let storeArr = [];
+    let mssg_to_show = "Nothing to show!!Please add a note ";
+    let get_from_previous_storage = '';
+    let add_title = [];
+    let append_to_datalist = [];
+    if (local.getItem('title') == null)
+        add_title = [];
+    else {
+        add_title = JSON.parse(local.getItem('title'));
+    }
+    if (local.getItem('note') == null)
+        storeArr = [];
+    else {
+        storeArr = JSON.parse(local.getItem('note'));
+    }
+    display_the_notes();
+    add_btn.addEventListener('click', function(e) {
+        if ((document.getElementById('add-title').value == null || document.getElementById('add-title').value == undefined || document.getElementById('add-title').value == '') && (document.getElementById('enter-note').value == null || document.getElementById('enter-note').value == undefined || document.getElementById('enter-note').value == ''))
+            document.getElementById('mssg-to-show').innerText = mssg_to_show + '\nYour note does not contains a title';
+        else if (document.getElementById('enter-note').value == null || document.getElementById('enter-note').value == undefined || document.getElementById('enter-note').value == '')
+            document.getElementById('mssg-to-show').innerText = mssg_to_show;
+        else if (document.getElementById('add-title').value == null || document.getElementById('add-title').value == undefined || document.getElementById('add-title').value == '')
+            document.getElementById('mssg-to-show').innerText = 'Your note does not contains a title';
+        else {
+            document.getElementById('mssg-to-show').innerText = '';
+            add_title.push(document.getElementById('add-title').value);
+            local.setItem('title', JSON.stringify(add_title));
+            storeArr.push(document.getElementById('enter-note').value);
+            local.setItem('note', JSON.stringify(storeArr));
+            // Display on Bottom_section part
+            document.getElementById('enter-note').value = '';
+            document.getElementById('add-title').value = '';
+
+            display_the_notes();
+
+        }
+    });
+
+    function display_the_notes() {
+        let show_text_note = '';
+        for (let index = 0; index < storeArr.length; index++) {
+            if (storeArr[index] == null || storeArr[index] == "" || storeArr[index] == undefined)
+                continue;
+            else {
+                show_text_note += `<div class="new-note-area">
+                    <h3>${add_title[index]}</h3>
+                    <div class="new-area">
+                        <p>${storeArr[index]}</p>
+                    </div>
+                    <button onclick='delete_note_from_section(${index})' id='${index}'>Delete Button</button>
+                </div>`;
+                append_to_datalist.push(add_title[index]);
+                let opt = document.createElement('option');
+                opt.setAttribute('value', add_title[index]);
+                document.getElementById('data-list').appendChild(opt);
+            }
+        }
+
+        document.getElementById('bottom-section').innerHTML = show_text_note;
+    }
+    //deletion of notes
+    function delete_note_from_section(index) {
+        storeArr.splice(index, 1);
+        add_title.splice(index, 1);
+        local.clear();
+        local.setItem('note', JSON.stringify(storeArr));
+        local.setItem('title', JSON.stringify(add_title));
+        display_the_notes();
+
+    }
+    document.getElementById('search-btn').addEventListener('click', function() {
+        let getnote = '',
+            getindex = -1;
+
+        for (let i = 0; i < add_title.length; i++) {
+            if (add_title[i] == document.getElementById('Search-note').value) {
+                getindex = i;
+                getnote = add_title[i];
+                console.log(add_title[i]);
+            }
+        }
+        console.log(getindex + " " + getnote);
+        document.getElementById('bottom-section').innerHTML = `<div class="new-note-area">
+                    <h3>${getnote}</h3>
+                    <div class="new-area">
+                        <p>${storeArr[getindex]}</p>
+                    </div>
+                    <button onclick='delete_note_from_section(${getindex})' id='${getindex}'>Delete Button</button>
+                </div>`
+    });
+</script>
+
+</html>
+<!-- write a program in a  given number set the kth bit -->
+<!-- Write a program in a given number clear the kth bit -->
+<!-- Write a program in a given number to toogle or invert the kth bit -->
+<!-- Write a program to swap the two numbers using bitwise operator -->
+<!-- WAP to genberate random numbers in b/w two values inlcude that value -->
